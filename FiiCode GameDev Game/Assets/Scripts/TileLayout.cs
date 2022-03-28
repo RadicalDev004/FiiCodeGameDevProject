@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TileLayout : MonoBehaviour
 {
-    public GameObject Rock;
+    public GameObject Rock, Chest;
 
     public int sizeX = 7;
     public int tileSize;

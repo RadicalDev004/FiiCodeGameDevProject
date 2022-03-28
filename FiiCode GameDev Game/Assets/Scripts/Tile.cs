@@ -22,6 +22,7 @@ public class Tile : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
 
         if (isRock) SpawnRock();
+        if (isChest) SpawnChest();
     }
 
     private void Update()
@@ -63,7 +64,13 @@ public class Tile : MonoBehaviour
         Rock.transform.parent = transform;
         Rock.transform.localPosition = new Vector3(0, 13, 0);
     }
-
+    private void SpawnChest()
+    {
+        Chest = Instantiate(parent.Chest);
+        Chest.SetActive(true);
+        Chest.transform.parent = transform;
+        Chest.transform.localPosition = new Vector3(-4.8f, 0, 2.1f);
+    }
     public void MoveRock(int tileTo, float time)
     {
         Rock.transform.SetParent(TileLayout.tiles[tileTo]);
