@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TileLayout : MonoBehaviour
 {
-    public GameObject Rock, Chest;
+    public GameObject Rock, Chest, End, Immutable;
 
     public int sizeX = 7;
     public int tileSize;
@@ -16,21 +16,20 @@ public class TileLayout : MonoBehaviour
 
     private void OnEnable()
     {
+        //Prepares tiles for game start
+
         tiles = new Transform[transform.childCount];
 
         for(int i=0; i<transform.childCount; i++)
         {
             tiles[i] = transform.GetChild(i);
             tiles[i].GetComponent<Tile>().number = i;
+            tiles[i].GetComponent<TileEditor>().shouldWork = false;
         }
 
         initialPos = tiles[0].position;
 
         ArrangeTiles();
-    }
-    private void Awake()
-    {
-
     }
 
     private void ArrangeTiles()

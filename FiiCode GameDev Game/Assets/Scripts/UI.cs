@@ -3,12 +3,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Pixelplacement;
 
 public class UI : MonoBehaviour
 {
     public Image Background, EndScreen;
     private GameManager Manager;
-
 
 
     private void Awake()
@@ -32,9 +32,9 @@ public class UI : MonoBehaviour
     public void EndGameUI()
     {
         Background.gameObject.SetActive(true);
-        LeanTween.color(Background.GetComponent<RectTransform>(), new Color32(0, 0, 0, 85), 0.25f);
 
-        LeanTween.scale(EndScreen.GetComponent<RectTransform>(), Vector3.one, 0.25f);
+        Tween.Color(Background, new Color(0, 0, 0, 0.3f), 0.5f, 0, Tween.EaseInOut);
+        Tween.LocalScale(EndScreen.GetComponent<RectTransform>(), Vector3.one, 0.5f, 0, Tween.EaseInOut);
     }
 
     private void PrepareUI()

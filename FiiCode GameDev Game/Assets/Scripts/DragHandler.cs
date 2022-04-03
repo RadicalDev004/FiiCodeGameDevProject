@@ -15,6 +15,9 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     public void OnDrag(PointerEventData eventData)
     {
+        // Handles movement by checking if current Touched Position is greater/smaller than the
+        // start Touched Position +/- treshhold on all 4 axis
+
         if (hasMoved) return;
 
         currentPos = eventData.position;
@@ -56,6 +59,9 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         Debug.Log("Move Right");
         OnMoveRight();
     }
+
+
+    //Events for each Move
 
     public delegate void MoveUp();
     public static event MoveUp OnMoveUp;

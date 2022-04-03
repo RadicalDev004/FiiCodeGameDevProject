@@ -1,11 +1,14 @@
 using UnityEngine;
-
+using Pixelplacement;
 public class Tile : MonoBehaviour
 {
+    //Tile behaviour
+
+
     private TileLayout parent;
     private GameManager gameManager;
 
-    public GameObject Rock, Chest, End;
+    public GameObject Rock, Chest, End, Immutable;
 
     public int number;
     public Type type;
@@ -17,40 +20,29 @@ public class Tile : MonoBehaviour
     public enum Type { none, astronaut, cable };
 
     private void Awake()
-    {
+    {       
         parent = transform.parent.GetComponent<TileLayout>();
         gameManager = FindObjectOfType<GameManager>();
 
         if (isRock) SpawnRock();
         if (isChest) SpawnChest();
+        if (isEnd) SpawnEnd();
+        if(isImmutable) SpawnImmutable();
     }
+
+
 
     private void Update()
     {
         switch (type)
         {
-            case Type.none: gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = Color.white; break;
+            case Type.none: gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = new Color(1, 1, 1, 0.25f); break;
 
             case Type.astronaut: gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = Color.blue; break;
 
             case Type.cable: gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = Color.cyan; break;
 
         }
-
-        if (isEnd)
-            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = Color.black;
-
-        if (isChest)
-            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = Color.yellow;
-
-        if (isRock)
-            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = Color.gray;
-
-        if (isImmutable)
-            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = Color.red;
-
-        if (gameManager.HasChestStar && isChest)
-            isChest = false;
 
 
         if (type == Type.cable && gameManager.HasCableStar == false)
@@ -62,7 +54,7 @@ public class Tile : MonoBehaviour
         Rock = Instantiate(parent.Rock);
         Rock.SetActive(true);
         Rock.transform.parent = transform;
-        Rock.transform.localPosition = new Vector3(0, 13, 0);
+        Rock.transform.localPosition = new Vector3(0, 13, 0.15f);
     }
     private void SpawnChest()
     {
@@ -71,10 +63,26 @@ public class Tile : MonoBehaviour
         Chest.transform.parent = transform;
         Chest.transform.localPosition = new Vector3(-4.8f, 0, 2.1f);
     }
+    private void SpawnEnd()
+    {
+        End = Instantiate(parent.End);
+        End.SetActive(true);
+        End.transform.parent = transform;
+        End.transform.localPosition = new Vector3(0, 6, 0);
+    }
+    private void SpawnImmutable()
+    {
+        Immutable = Instantiate(parent.Immutable);
+        Immutable.SetActive(true);
+        Immutable.transform.parent = transform;
+        Immutable.transform.localPosition = new Vector3(0, 4, 0);
+    }
+
     public void MoveRock(int tileTo, float time)
     {
         Rock.transform.SetParent(TileLayout.tiles[tileTo]);
-        LeanTween.moveLocal(Rock, new Vector3(0, 13, 0), time);
+        //LeanTween.moveLocal(Rock, new Vector3(0, 13, 0), time);
+        Tween.LocalPosition(Rock.transform, new Vector3(0, 13, 0.15f), time, 0, Tween.EaseInOutStrong);
         TileLayout.tiles[tileTo].GetComponent<Tile>().Rock = Rock;
         Rock = null;
     }

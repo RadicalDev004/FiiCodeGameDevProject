@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using Pixelplacement;
 public class Player : MonoBehaviour
 {
     GameManager gameManager;
@@ -20,12 +20,15 @@ public class Player : MonoBehaviour
     public enum Directions { none = -1, up = 1, down = 3, right = 0, left = 2 }
     public Directions dir;
 
+
     private void Awake()
     {
         CanMove = true;
         gameManager = FindObjectOfType<GameManager>();
         dir = Directions.right;
     }
+
+
     private void OnEnable()
     {
         DragHandler.OnMoveUp += Up;
@@ -42,29 +45,31 @@ public class Player : MonoBehaviour
         DragHandler.OnMoveLeft -= Left;
     }
 
+
     private void Up() => StartCoroutine(GenericMove(Directions.up));
     private void Down() => StartCoroutine(GenericMove(Directions.down));
     private void Right() => StartCoroutine(GenericMove(Directions.right));
     private void Left() => StartCoroutine(GenericMove(Directions.left));
 
 
+
     private IEnumerator GenericMove(Directions _dir)
     {
+        //Player Move algorithm
+
         if (!CanMove) yield break;
         CanMove = false;
 
         Look(_dir, TimeToRotate);
+
         yield return new WaitForSeconds(TimeToRotate);
         dir = _dir;
-
-
-        if (IsNextTileEnd(_dir)) { End(); yield break; }
 
         int prevTile = CurrentTile;
         int nextTile = 0;
 
         switch (_dir)
-        {         
+        {
             case Directions.up:
                 if (posY == 0) { Handheld.Vibrate(); yield break; }
                 nextTile = CurrentTile - 7;
@@ -77,12 +82,12 @@ public class Player : MonoBehaviour
 
             case Directions.right:
                 if (posX == 6) { Handheld.Vibrate(); yield break; }
-                nextTile = CurrentTile +1;
+                nextTile = CurrentTile + 1;
                 break;
 
             case Directions.left:
                 if (posX == 0) { Handheld.Vibrate(); yield break; }
-                nextTile = CurrentTile - 1;             
+                nextTile = CurrentTile - 1;
                 break;
 
             default:
@@ -96,11 +101,26 @@ public class Player : MonoBehaviour
             else { CanMoveAgain(); Handheld.Vibrate(); yield break; }
         }
 
-        if (IsNextTileImmutable(nextTile)) { CanMoveAgain(); Handheld.Vibrate(); yield break; }
+        if (IsNextTileImmutable(nextTile))
+        {
+            CanMoveAgain(); Handheld.Vibrate();
+            yield break;
+        }
 
         Move(nextTile, TimeToMove);
 
         yield return new WaitForSeconds(TimeToMove);
+
+        if (IsNextTileEnd(nextTile)) { End(); yield break; }
+
+        if (IsNextTileChest(nextTile))
+        {
+            Debug.LogWarning("TOUCHED Chest");
+            gameManager.HasChestStar = true;
+
+            //Chest Opening Code Coming Soon
+            OpenChestAnimation();
+        }
 
         SetTilesAttributes(prevTile);
     }
@@ -113,19 +133,20 @@ public class Player : MonoBehaviour
     }
     private void Move(int tileTo, float time)
     {
-        
+
         if (IsMoveOutOfBounds(tileTo)) { Handheld.Vibrate(); return; }
 
         CheckIfNextTileIsCable(tileTo);
-        CheckIfNextTileIsChest(tileTo);
 
-        LeanTween.move(gameObject, new Vector3(TileLayout.tiles[tileTo].position.x, transform.position.y, TileLayout.tiles[tileTo].position.z), time);
+        Tween.Position(transform, new Vector3(TileLayout.tiles[tileTo].position.x, transform.position.y, TileLayout.tiles[tileTo].position.z), time, 0, Tween.EaseInOutStrong);
+        //LeanTween.move(gameObject, new Vector3(TileLayout.tiles[tileTo].position.x, transform.position.y, TileLayout.tiles[tileTo].position.z), time);
 
         posX = tileTo % 7;
         posY = tileTo / 7;
 
         Invoke(nameof(CanMoveAgain), time);
     }
+
     private bool IsMoveOutOfBounds(int tileTo)
     {
         if (tileTo < 0 || tileTo > TileLayout.tiles.Length)
@@ -134,25 +155,6 @@ public class Player : MonoBehaviour
         return false;
     }
     private void CanMoveAgain() => CanMove = true;
-    private bool IsNextTileEnd(Directions directions)
-    {
-        if (TileLayout.tiles[CurrentTile].GetComponent<Tile>().isEnd == false)
-            return false;
-
-        if (posX == 0 && directions == Directions.left)
-            return true;
-
-        if (posX == 6 && directions == Directions.right)
-            return true;
-
-        if (posY == 0 && directions == Directions.up)
-            return true;
-
-        if (posY == 6 && directions == Directions.down)
-            return true;
-
-        return false;
-    }
 
     private void SetTilesAttributes(int prevTile)
     {
@@ -160,15 +162,6 @@ public class Player : MonoBehaviour
         TileLayout.tiles[CurrentTile].GetComponent<Tile>().type = Tile.Type.astronaut;
     }
 
-    private void CheckIfNextTileIsChest(int nextTile)
-    {
-        if (TileLayout.tiles[nextTile].GetComponent<Tile>().isChest == true)
-        {
-            Debug.LogWarning("TOUCHED Chest");
-            gameManager.HasChestStar = true;
-        }
-
-    }
     private void CheckIfNextTileIsCable(int nextTile)
     {
         if (TileLayout.tiles[nextTile].GetComponent<Tile>().type == Tile.Type.cable)
@@ -179,19 +172,25 @@ public class Player : MonoBehaviour
 
     }
 
+    private bool IsNextTileEnd(int tileTo)
+    {
+        return TileLayout.tiles[tileTo].GetComponent<Tile>().isEnd;
+    }
+    private bool IsNextTileChest(int tileTo)
+    {
+        return TileLayout.tiles[tileTo].GetComponent<Tile>().isChest;
+
+    }
     private bool IsNextTileImmutable(int nextTile)
     {
-        if (TileLayout.tiles[nextTile].GetComponent<Tile>().isImmutable)
-            return true;
-        return false;
+        return TileLayout.tiles[nextTile].GetComponent<Tile>().isImmutable;
     }
-
     private bool IsNextTileRock(int nextTile)
     {
-        if (TileLayout.tiles[nextTile].GetComponent<Tile>().isRock)
-            return true;
-        return false;
+        return TileLayout.tiles[nextTile].GetComponent<Tile>().isRock;
     }
+
+
     private bool CanMoveRock(int currentTile, int nextTile, Directions dir)
     {
         int tileToMoveRockTo = nextTile + nextTile - currentTile;
@@ -221,6 +220,11 @@ public class Player : MonoBehaviour
 
         TileLayout.tiles[nextTile].GetComponent<Tile>().isRock = false;
         TileLayout.tiles[nextnextTile].GetComponent<Tile>().isRock = true;
+
+    }
+
+    private void OpenChestAnimation()
+    {
 
     }
 }
