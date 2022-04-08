@@ -61,14 +61,14 @@ public class Tile : MonoBehaviour
         Chest = Instantiate(parent.Chest);
         Chest.SetActive(true);
         Chest.transform.parent = transform;
-        Chest.transform.localPosition = new Vector3(-4.8f, 0, 2.1f);
+        Chest.transform.localPosition = new Vector3(0, 8, 0);
     }
     private void SpawnEnd()
     {
         End = Instantiate(parent.End);
         End.SetActive(true);
         End.transform.parent = transform;
-        End.transform.localPosition = new Vector3(0, 6, 0);
+        End.transform.localPosition = new Vector3(-0.23f, 18.2f, -0.24f);
     }
     private void SpawnImmutable()
     {
@@ -82,7 +82,7 @@ public class Tile : MonoBehaviour
     {
         Rock.transform.SetParent(TileLayout.tiles[tileTo]);
         //LeanTween.moveLocal(Rock, new Vector3(0, 13, 0), time);
-        Tween.LocalPosition(Rock.transform, new Vector3(0, 13, 0.15f), time, 0, Tween.EaseInOutStrong);
+        Tween.LocalPosition(Rock.transform, new Vector3(0, 13, 0.15f), time, 0, Tween.EaseInOutStrong, Tween.LoopType.None, null, null, true);
         TileLayout.tiles[tileTo].GetComponent<Tile>().Rock = Rock;
         Rock = null;
     }

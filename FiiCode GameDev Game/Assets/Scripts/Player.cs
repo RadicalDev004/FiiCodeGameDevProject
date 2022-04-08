@@ -3,7 +3,9 @@ using UnityEngine;
 using Pixelplacement;
 public class Player : MonoBehaviour
 {
-    GameManager gameManager;
+    private GameManager gameManager;
+    private AnimationManager animationManager;
+    private GameObject Cam;
 
     public delegate void EndGame();
     public static event EndGame End;
@@ -23,8 +25,10 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        Cam = Camera.main.gameObject;
         CanMove = true;
         gameManager = FindObjectOfType<GameManager>();
+        animationManager = FindObjectOfType<AnimationManager>();
         dir = Directions.right;
     }
 
@@ -71,47 +75,52 @@ public class Player : MonoBehaviour
         switch (_dir)
         {
             case Directions.up:
-                if (posY == 0) { Handheld.Vibrate(); yield break; }
+                if (posY == 0) { RecoverFromInadequateMove(); yield break; }
                 nextTile = CurrentTile - 7;
                 break;
 
             case Directions.down:
-                if (posY == 3) { Handheld.Vibrate(); yield break; }
+                if (posY == 3) { RecoverFromInadequateMove(); yield break; }
                 nextTile = CurrentTile + 7;
                 break;
 
             case Directions.right:
-                if (posX == 6) { Handheld.Vibrate(); yield break; }
+                if (posX == 6) { RecoverFromInadequateMove(); yield break; }
                 nextTile = CurrentTile + 1;
                 break;
 
             case Directions.left:
-                if (posX == 0) { Handheld.Vibrate(); yield break; }
+                if (posX == 0) { RecoverFromInadequateMove(); yield break; }
                 nextTile = CurrentTile - 1;
                 break;
 
             default:
                 break;
         }
-
-        if (IsNextTileRock(nextTile))
-        {
-            if (CanMoveRock(CurrentTile, nextTile, _dir))
-                MoveRock(CurrentTile, nextTile);
-            else { CanMoveAgain(); Handheld.Vibrate(); yield break; }
-        }
+        int anim = 10;
 
         if (IsNextTileImmutable(nextTile))
         {
-            CanMoveAgain(); Handheld.Vibrate();
+            RecoverFromInadequateMove();
             yield break;
         }
 
+        if (IsNextTileRock(nextTile))
+        {
+            if (CanMoveRock(CurrentTile, nextTile, _dir)) {
+                MoveRock(CurrentTile, nextTile);
+                anim = 11;
+            }
+            else { RecoverFromInadequateMove(); yield break; }
+        }
+        
+
         Move(nextTile, TimeToMove);
+        SetAnimationState(anim);
 
         yield return new WaitForSeconds(TimeToMove);
 
-        if (IsNextTileEnd(nextTile)) { End(); yield break; }
+        if (IsNextTileEnd(nextTile)) {Look(Directions.down, 0.5f);  End(); yield break; }
 
         if (IsNextTileChest(nextTile))
         {
@@ -119,8 +128,10 @@ public class Player : MonoBehaviour
             gameManager.HasChestStar = true;
 
             //Chest Opening Code Coming Soon
-            OpenChestAnimation();
+            OpenChestAnimation(nextTile);
         }
+
+        SetAnimationState(0);
 
         SetTilesAttributes(prevTile);
     }
@@ -138,7 +149,7 @@ public class Player : MonoBehaviour
 
         CheckIfNextTileIsCable(tileTo);
 
-        Tween.Position(transform, new Vector3(TileLayout.tiles[tileTo].position.x, transform.position.y, TileLayout.tiles[tileTo].position.z), time, 0, Tween.EaseInOutStrong);
+        Tween.Position(transform, new Vector3(TileLayout.tiles[tileTo].position.x, transform.position.y, TileLayout.tiles[tileTo].position.z), time, 0, Tween.EaseInOut, Tween.LoopType.None,null,null, true);
         //LeanTween.move(gameObject, new Vector3(TileLayout.tiles[tileTo].position.x, transform.position.y, TileLayout.tiles[tileTo].position.z), time);
 
         posX = tileTo % 7;
@@ -223,8 +234,23 @@ public class Player : MonoBehaviour
 
     }
 
-    private void OpenChestAnimation()
-    {
+    private void SetAnimationState(int state) => animationManager.State = state;
 
+    private void OpenChestAnimation(int tileAt)
+    {
+        TileLayout.tiles[tileAt].GetComponentInChildren<Star>().GetCollected(1);
+        TileLayout.tiles[tileAt].GetComponent<Tile>().isChest = false;
+    }
+
+    public void ShakeCamera()
+    {
+        Tween.Shake(Cam.transform, Cam.transform.position, new Vector3(0.1f, 0.1f, 0.1f), 0.15f, 0);
+    }
+
+    private void RecoverFromInadequateMove()
+    {
+        ShakeCamera();
+        Handheld.Vibrate();
+        CanMoveAgain();
     }
 }

@@ -16,20 +16,16 @@ public class TileEditor : MonoBehaviour
 
     void Update()
     {
-        if (!shouldWork) return; 
-
         if (tile.isEnd)
-            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = Color.green;
+            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = new Color32(0, 75, 255, 175);
 
         else if (tile.isChest)
-            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = Color.yellow;
+            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = new Color32(255, 200, 0, 175);
 
         else if (tile.isRock)
-            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = Color.black;
+            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = new Color32(0, 0, 0, 175);
 
         else if (tile.isImmutable)
-            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = Color.red;
-        else
-            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = new Color(1, 1, 1, 0.25f);
+            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = new Color32(255, 0, 0, 175);
     }
 }

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void EndGameFromManager()
     {
+        FindObjectOfType<AnimationManager>().State = 25;
         Debug.Log("Ended game from Manager");
         if(!HasCableStar) Stars--;
         if(HasChestStar) Stars++;
