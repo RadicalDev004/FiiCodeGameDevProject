@@ -32,7 +32,10 @@ public class GameManager : MonoBehaviour
         if(!HasCableStar) Stars--;
         if(HasChestStar) Stars++;
 
+        PlayerPrefs.SetInt(("LevelStars" + Level).ToString(), Stars);
+        Debug.Log(("LevelStars" + Level) + " " + Stars);
         PlayerPrefs.SetInt("Level", Level + 1);
+
 
         //SceneManager.LoadScene("Level");
     }

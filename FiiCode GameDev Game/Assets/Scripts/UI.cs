@@ -43,12 +43,15 @@ public class UI : MonoBehaviour
     {
         OpenMenu();
     }
-    public void ColseMenuButton()
+    public void CloseMenuButton()
     {
         CloseMenu();
     }
 
-
+    public void NextLevel()
+    {
+        SceneManager.LoadScene("Level" + PlayerPrefs.GetInt("Level"));
+    }
 
 
 
