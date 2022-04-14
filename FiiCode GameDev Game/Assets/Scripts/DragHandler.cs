@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    public float Treshold;
+    private float Treshold = 150;
     private bool hasMoved = false;
 
     public Vector3 startPos, currentPos;

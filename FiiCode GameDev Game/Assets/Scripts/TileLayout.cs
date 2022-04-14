@@ -14,6 +14,12 @@ public class TileLayout : MonoBehaviour
 
     public static Transform[] tiles;
 
+    [Header("Spawnable Positions")]
+    public Vector3 RockPos; 
+    public Vector3 StarPos; 
+    public Vector3 EndPos; 
+    public Vector3 ImmutablePos;
+
     private void OnEnable()
     {
         //Prepares tiles for game start

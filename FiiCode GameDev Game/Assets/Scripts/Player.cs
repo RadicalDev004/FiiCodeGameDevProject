@@ -244,7 +244,7 @@ public class Player : MonoBehaviour
 
     public void ShakeCamera()
     {
-        Tween.Shake(Cam.transform, Cam.transform.position, new Vector3(0.1f, 0.1f, 0.1f), 0.15f, 0);
+        Tween.Shake(Cam.transform, Cam.transform.position, new Vector3(0.15f, 0.15f, 0.15f), 0.15f, 0);
     }
 
     private void RecoverFromInadequateMove()

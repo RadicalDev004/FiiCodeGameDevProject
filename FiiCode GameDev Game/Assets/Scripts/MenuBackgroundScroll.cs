@@ -14,6 +14,11 @@ public class MenuBackgroundScroll : MonoBehaviour//, IDragHandler, IBeginDragHan
 
     private void Awake()
     {
+        if(!PlayerPrefs.HasKey("Level"))
+        {
+            PlayerPrefs.SetInt("Level", 1);
+        }
+
         left = Background.sizeDelta.x / 2 - 960;
         right = -left;
 

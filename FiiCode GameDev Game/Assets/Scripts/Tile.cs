@@ -54,35 +54,35 @@ public class Tile : MonoBehaviour
         Rock = Instantiate(parent.Rock);
         Rock.SetActive(true);
         Rock.transform.parent = transform;
-        Rock.transform.localPosition = new Vector3(0, 13, 0.15f);
+        Rock.transform.localPosition = parent.RockPos;
     }
     private void SpawnChest()
     {
         Chest = Instantiate(parent.Chest);
         Chest.SetActive(true);
         Chest.transform.parent = transform;
-        Chest.transform.localPosition = new Vector3(0, 8, 0);
+        Chest.transform.localPosition = parent.StarPos;
     }
     private void SpawnEnd()
     {
         End = Instantiate(parent.End);
         End.SetActive(true);
         End.transform.parent = transform;
-        End.transform.localPosition = new Vector3(-0.23f, 18.2f, -0.24f);
+        End.transform.localPosition = parent.EndPos;
     }
     private void SpawnImmutable()
     {
         Immutable = Instantiate(parent.Immutable);
         Immutable.SetActive(true);
         Immutable.transform.parent = transform;
-        Immutable.transform.localPosition = new Vector3(0, 4, 0);
+        Immutable.transform.localPosition = parent.ImmutablePos;
     }
 
     public void MoveRock(int tileTo, float time)
     {
         Rock.transform.SetParent(TileLayout.tiles[tileTo]);
         //LeanTween.moveLocal(Rock, new Vector3(0, 13, 0), time);
-        Tween.LocalPosition(Rock.transform, new Vector3(0, 13, 0.15f), time, 0, Tween.EaseInOutStrong, Tween.LoopType.None, null, null, true);
+        Tween.LocalPosition(Rock.transform, parent.RockPos, time, 0, Tween.EaseInOutStrong, Tween.LoopType.None, null, null, true);
         TileLayout.tiles[tileTo].GetComponent<Tile>().Rock = Rock;
         Rock = null;
     }
