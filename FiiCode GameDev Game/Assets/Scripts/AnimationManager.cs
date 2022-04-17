@@ -30,6 +30,6 @@ public class AnimationManager : MonoBehaviour
 
         State = 0;
 
-        StartCoroutine(IdleTimer());    
+        StartCoroutine(IdleTimer());
     }
 }

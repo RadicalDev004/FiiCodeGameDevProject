@@ -35,7 +35,6 @@ public class MenuBackgroundScroll : MonoBehaviour//, IDragHandler, IBeginDragHan
         up = -down;
 
 
-
         if (Input.touchCount == 1)
         {
             Touch touch = Input.GetTouch(0);

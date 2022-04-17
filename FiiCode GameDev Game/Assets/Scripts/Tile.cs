@@ -8,7 +8,7 @@ public class Tile : MonoBehaviour
     private TileLayout parent;
     private GameManager gameManager;
 
-    public GameObject Rock, Chest, End, Immutable;
+    [System.NonSerialized] public GameObject Rock, Chest, End, Immutable, Steps;
 
     public int number;
     public Type type;
@@ -37,16 +37,10 @@ public class Tile : MonoBehaviour
         switch (type)
         {
             case Type.none: gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = new Color(1, 1, 1, 0.25f); break;
-
-            case Type.astronaut: gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = Color.blue; break;
-
-            case Type.cable: gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = Color.cyan; break;
-
         }
 
 
-        if (type == Type.cable && gameManager.HasCableStar == false)
-            type = Type.none;
+        if (type == Type.cable && gameManager.HasCableStar == false) { Destroy(Steps); type = Type.none; }
     }
 
     private void SpawnRock()
@@ -77,13 +71,26 @@ public class Tile : MonoBehaviour
         Immutable.transform.parent = transform;
         Immutable.transform.localPosition = parent.ImmutablePos;
     }
+    public void SpawnSteps(float angle)
+    {
+        Steps = Instantiate(parent.Steps);
+        Steps.SetActive(true);
+        Steps.transform.parent = transform;
+        Steps.transform.localPosition = new Vector3(0, 0.5f, 0);
+        Steps.transform.rotation = Quaternion.Euler(90, 0, angle);
+    }
+
+
 
     public void MoveRock(int tileTo, float time)
     {
+        AudioManager.Play("RockMove");
         Rock.transform.SetParent(TileLayout.tiles[tileTo]);
         //LeanTween.moveLocal(Rock, new Vector3(0, 13, 0), time);
         Tween.LocalPosition(Rock.transform, parent.RockPos, time, 0, Tween.EaseInOutStrong, Tween.LoopType.None, null, null, true);
         TileLayout.tiles[tileTo].GetComponent<Tile>().Rock = Rock;
         Rock = null;
+        Invoke(nameof(StopRockSound), time);
     }
+    private void StopRockSound() => AudioManager.Stop("RockMove");
 }

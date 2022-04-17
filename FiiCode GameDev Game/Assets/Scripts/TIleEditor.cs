@@ -21,7 +21,7 @@ public class TileEditor : MonoBehaviour
             gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = new Color32(0, 75, 255, 150);
 
         else if (tile.isChest)
-            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = new Color32(255, 200, 0, 150);
+            gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = new Color32(255, 175, 0, 150);
 
         else if (tile.isRock)
             gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = new Color32(0, 0, 0, 150);

@@ -75,12 +75,14 @@ public class UI : MonoBehaviour
 
     private void OpenMenu()
     {
+        AudioManager.Play("OpenPanel");
         Time.timeScale = 0;
         FillInBackground();
         OpenTab(Menu);
     }
     private void CloseMenu()
     {
+        AudioManager.Play("ClosePanel");
         Time.timeScale = 1;
         FillOutBackground();
         CloseTab(Menu);
@@ -104,12 +106,13 @@ public class UI : MonoBehaviour
     private void OpenTab(Image image)
     {
         if (AnimationCooldown) return;
-
+       
         AnimationCooldown = true;
         Tween.LocalScale(image.GetComponent<RectTransform>(), Vector3.one, 0.5f, 0, Tween.EaseInOut);
     }
     private void CloseTab(Image image)
     {
+        
         Tween.LocalScale(image.GetComponent<RectTransform>(), Vector3.zero, 0.5f, 0, Tween.EaseInOut);
         Invoke(nameof(ResetAnimationCooldown), 0.5f);
     }

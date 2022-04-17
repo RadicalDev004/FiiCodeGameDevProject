@@ -10,13 +10,14 @@ public class LevelButton : MonoBehaviour
     private TMP_Text Level;
     private GameObject Stars;
     private int level;
+    public GameObject Line;
 
     public Sprite Completed, Locked, Current, Special;
     public bool isSpecial = false;
 
     private void Awake()
     {
-        level = transform.GetSiblingIndex() + 1;
+        level = transform.GetSiblingIndex();
 
         Level = GetComponentInChildren<TMP_Text>();
         Level.text = level.ToString();
@@ -33,6 +34,8 @@ public class LevelButton : MonoBehaviour
 
     private void LoadLevel()
     {
+        if (Energy.currentEnergy == 0) { AudioManager.Play("Error"); return; }
+        AudioManager.Play("EnterGame");
         SceneManager.LoadScene("Level" + level);
     }
 
@@ -65,5 +68,15 @@ public class LevelButton : MonoBehaviour
             GetComponent<Button>().enabled = false;
         }
          
+    }
+    private void SpawnLine()
+    {
+        Vector2 firstPos = GetComponent<RectTransform>().anchoredPosition;
+        Vector2 lastPos = transform.parent.GetChild(transform.GetSiblingIndex()+1).GetComponent<RectTransform>().anchoredPosition;
+
+        Vector2 desiredPos = (firstPos + lastPos) / 2;
+        GameObject newLine = Instantiate(Line, transform);
+        newLine.GetComponent<RectTransform>().anchoredPosition = desiredPos;
+        LeanTween.rotate(newLine, new Vector3(0,0,Vector2.Angle(firstPos, lastPos)), 0.1f);
     }
 }
