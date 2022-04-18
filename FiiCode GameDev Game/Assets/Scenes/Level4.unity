@@ -412,7 +412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &68366535
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,7 +570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &79510107
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!21 &87172610
 Material:
   serializedVersion: 6
@@ -1074,7 +1071,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &138321208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1991,7 +1987,7 @@ MonoBehaviour:
   number: 27
   type: 0
   isEnd: 0
-  isChest: 1
+  isChest: 0
   isRock: 0
   isImmutable: 0
 --- !u!114 &297976840
@@ -2006,7 +2002,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &304199849
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,7 +2198,7 @@ MonoBehaviour:
   type: 0
   isEnd: 0
   isChest: 0
-  isRock: 0
+  isRock: 1
   isImmutable: 0
 --- !u!114 &323393527
 MonoBehaviour:
@@ -2217,7 +2212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &329522688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5893341342470069643, guid: dde5e8339648d2f46bd91b5ec4349dfc, type: 3}
@@ -2463,7 +2457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &465441297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2646,7 +2639,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0.25}
+    - _Color: {r: 0, g: 0, b: 0, a: 0.5882353}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!1 &493121757
@@ -2910,7 +2903,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &579445156
 GameObject:
   m_ObjectHideFlags: 0
@@ -3038,7 +3030,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &589751074
 GameObject:
   m_ObjectHideFlags: 0
@@ -3166,7 +3157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &592979739
 GameObject:
   m_ObjectHideFlags: 0
@@ -3402,7 +3392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &610229548
 GameObject:
   m_ObjectHideFlags: 0
@@ -3653,7 +3642,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &632713996
 GameObject:
   m_ObjectHideFlags: 0
@@ -3960,7 +3948,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!21 &687381447
 Material:
   serializedVersion: 6
@@ -4678,7 +4665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &884184621
 GameObject:
   m_ObjectHideFlags: 0
@@ -4806,7 +4792,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &886221643
 GameObject:
   m_ObjectHideFlags: 0
@@ -4934,7 +4919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &902578010
 GameObject:
   m_ObjectHideFlags: 0
@@ -5123,7 +5107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &938166364
 GameObject:
   m_ObjectHideFlags: 0
@@ -5491,7 +5474,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 0.5882353}
+    - _Color: {r: 1, g: 0, b: 0, a: 0.5882353}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!1 &1076355057
@@ -5956,7 +5939,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &1169312030
 GameObject:
   m_ObjectHideFlags: 0
@@ -6392,9 +6374,9 @@ MonoBehaviour:
   number: 11
   type: 0
   isEnd: 0
-  isChest: 0
+  isChest: 1
   isRock: 0
-  isImmutable: 1
+  isImmutable: 0
 --- !u!114 &1225190753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6407,7 +6389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &1228679993
 GameObject:
   m_ObjectHideFlags: 0
@@ -6762,7 +6743,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &1251053849
 GameObject:
   m_ObjectHideFlags: 0
@@ -6907,7 +6887,7 @@ MonoBehaviour:
   type: 0
   isEnd: 0
   isChest: 0
-  isRock: 0
+  isRock: 1
   isImmutable: 0
 --- !u!114 &1266730587
 MonoBehaviour:
@@ -6921,7 +6901,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &1267396144
 GameObject:
   m_ObjectHideFlags: 0
@@ -7085,7 +7064,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &1300913750
 GameObject:
   m_ObjectHideFlags: 0
@@ -7331,7 +7309,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 0.6862745, b: 0, a: 0.5882353}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.25}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!1 &1483447632
@@ -7723,7 +7701,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!21 &1554377221
 Material:
   serializedVersion: 6
@@ -7798,7 +7775,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0.25}
+    - _Color: {r: 0, g: 0, b: 0, a: 0.5882353}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!1 &1568235697
@@ -7928,7 +7905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &1568720640
 GameObject:
   m_ObjectHideFlags: 0
@@ -8621,7 +8597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &1749484721
 GameObject:
   m_ObjectHideFlags: 0
@@ -9038,7 +9013,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &1851540252
 GameObject:
   m_ObjectHideFlags: 0
@@ -9236,7 +9210,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0, a: 0.5882353}
+    - _Color: {r: 1, g: 0.6862745, b: 0, a: 0.5882353}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!1 &1877691292
@@ -9829,7 +9803,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &2060977175
 GameObject:
   m_ObjectHideFlags: 0
@@ -10164,8 +10137,8 @@ MonoBehaviour:
   type: 0
   isEnd: 0
   isChest: 0
-  isRock: 1
-  isImmutable: 0
+  isRock: 0
+  isImmutable: 1
 --- !u!114 &2137585107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10178,7 +10151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0189c94f2450e243af7389e64253cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldWork: 1
 --- !u!1 &528873367040785655 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3097746200615434890, guid: c76b47ac6f3a18f4e8db414195e0ab0b, type: 3}
@@ -10632,7 +10604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5359875343508391026, guid: eff303de893b65a45ae96248d70fc41a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.5
+      value: 6.03
       objectReference: {fileID: 0}
     - target: {fileID: 5359875343508391026, guid: eff303de893b65a45ae96248d70fc41a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10640,7 +10612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5359875343508391026, guid: eff303de893b65a45ae96248d70fc41a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 5.51
       objectReference: {fileID: 0}
     - target: {fileID: 5359875343508391026, guid: eff303de893b65a45ae96248d70fc41a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10669,6 +10641,14 @@ PrefabInstance:
     - target: {fileID: 5359875343508391026, guid: eff303de893b65a45ae96248d70fc41a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359875343508391027, guid: eff303de893b65a45ae96248d70fc41a, type: 3}
+      propertyPath: posX
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359875343508391027, guid: eff303de893b65a45ae96248d70fc41a, type: 3}
+      propertyPath: posY
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5359875343508391027, guid: eff303de893b65a45ae96248d70fc41a, type: 3}
       propertyPath: Fireworks

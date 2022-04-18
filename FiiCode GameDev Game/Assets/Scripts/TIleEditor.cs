@@ -1,13 +1,10 @@
 using UnityEngine;
 
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class TileEditor : MonoBehaviour
 {
     //Gives Easy acces to editing tiles in the Editor (for creating levels)
 
-
-
-    public bool shouldWork = true;
 
     private Tile tile;
     void Start()
@@ -28,7 +25,7 @@ public class TileEditor : MonoBehaviour
 
         else if (tile.isImmutable)
             gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = new Color32(255, 0, 0, 150);
-        else if(tile.type==Tile.Type.none)
+        else if (tile.type == Tile.Type.none)
         {
             gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = new Color(1, 1, 1, 0.25f);
         }

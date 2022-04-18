@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4323342504022716378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4323342504022716376}
+  - component: {fileID: 4323342504022716377}
+  - component: {fileID: 4323342504022716375}
+  - component: {fileID: 4323342504022716374}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4323342504022716376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4323342504022716378}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4323342504022716377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4323342504022716378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424574fcdd40357499c99ff2748ed3e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HasCableStar: 1
+  HasChestStar: 0
+  UiStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Congrats: {fileID: 0}
+--- !u!114 &4323342504022716375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4323342504022716378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac48f18ddb312124c8e2235a542f9d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+--- !u!114 &4323342504022716374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4323342504022716378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be48f3df35d3feb4c92bf28d515b1470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Skin0:
+  - {fileID: 2100000, guid: 6aa89e1fa88220448981eecb1f030e10, type: 2}
+  - {fileID: 2100000, guid: 492bf879bc1cc2f429b653b415395285, type: 2}
+  - {fileID: 2100000, guid: 3c42d094f3fc44a4a810e5c1f52e3095, type: 2}
+  - {fileID: 2100000, guid: 6fd88714069717147a0b8c23b556dccd, type: 2}
+  - {fileID: 2100000, guid: c06138d8ca698c845b3da7ef8467edfa, type: 2}
+  - {fileID: 2100000, guid: 5b333016fd0fd4740bda84ca6f8ce2fe, type: 2}
+  - {fileID: 2100000, guid: 0704b17d6c683614f95e2388e2ecf8f4, type: 2}
+  - {fileID: 2100000, guid: 9ba9fab423075384e8ac18dfecdbcfe4, type: 2}
+  - {fileID: 2100000, guid: ab96dbe843254e84f9ba833c9804ee5f, type: 2}
+  - {fileID: 2100000, guid: c32d80f33b2b6cd4285c6f84b7af0b7d, type: 2}
+  Skin1:
+  - {fileID: 2100000, guid: dd84b5334052ad54194f8c3a0d96daf0, type: 2}
+  - {fileID: 2100000, guid: 7bbee7d2dff6f77438430bb5c8ad56c3, type: 2}
+  - {fileID: 2100000, guid: 7484145f1e921a1428b3ddd19a872f8e, type: 2}
+  - {fileID: 2100000, guid: 035b3bd8a06cb314ab99ee1b00884930, type: 2}
+  - {fileID: 2100000, guid: b5abfd18e3b4dcd469c8a18cee184626, type: 2}
+  - {fileID: 2100000, guid: 5c54467ddad6c65429ae1cc3e817426e, type: 2}
+  - {fileID: 2100000, guid: 7dae1b2c6df407a48809688d26463815, type: 2}
+  - {fileID: 2100000, guid: 8ca16c1774ca24146814a2638ddfa24c, type: 2}
+  - {fileID: 2100000, guid: 0ec9f4a3fc8220c4d8a49d00f4e46594, type: 2}
+  - {fileID: 2100000, guid: 0c2968edf781d3749a35621ff2ce5ad0, type: 2}
+  Skin2:
+  - {fileID: 2100000, guid: 02db6bb612a92804187abc086145c21f, type: 2}
+  - {fileID: 2100000, guid: f54b51e1f85053c4891b6747b6aac69f, type: 2}
+  - {fileID: 2100000, guid: b970a2891d285154cb6936e3b9f653cb, type: 2}
+  - {fileID: 2100000, guid: 43878d6546cfd9543bf5b460287c9b4b, type: 2}
+  - {fileID: 2100000, guid: 5d771a1ec23888a499420cb8c1c4cc7d, type: 2}
+  - {fileID: 2100000, guid: 56bc3a34d22764c40a14ff83949ab2f5, type: 2}
+  - {fileID: 2100000, guid: 59e0e0f0ed40306488aca8bc09c89846, type: 2}
+  - {fileID: 2100000, guid: a440a39d5b686854b8a02fdb267e84e2, type: 2}
+  - {fileID: 2100000, guid: 08d6b8a47517fb34b860f04e8b92100c, type: 2}
+  - {fileID: 2100000, guid: 8440b9f2a0d01bc40a9c63b9282903b4, type: 2}
+  Skin3:
+  - {fileID: 2100000, guid: ff5f6ff0b869a704eb6fd0b1ef8f3a05, type: 2}
+  - {fileID: 2100000, guid: ff5f6ff0b869a704eb6fd0b1ef8f3a05, type: 2}
+  - {fileID: 2100000, guid: ff5f6ff0b869a704eb6fd0b1ef8f3a05, type: 2}
+  - {fileID: 2100000, guid: ff5f6ff0b869a704eb6fd0b1ef8f3a05, type: 2}
+  - {fileID: 2100000, guid: ff5f6ff0b869a704eb6fd0b1ef8f3a05, type: 2}
+  - {fileID: 2100000, guid: ff5f6ff0b869a704eb6fd0b1ef8f3a05, type: 2}
+  - {fileID: 2100000, guid: ff5f6ff0b869a704eb6fd0b1ef8f3a05, type: 2}
+  - {fileID: 2100000, guid: ff5f6ff0b869a704eb6fd0b1ef8f3a05, type: 2}
+  - {fileID: 2100000, guid: ff5f6ff0b869a704eb6fd0b1ef8f3a05, type: 2}
+  - {fileID: 2100000, guid: ff5f6ff0b869a704eb6fd0b1ef8f3a05, type: 2}
+  Astro: {fileID: 0}
+  a: 0

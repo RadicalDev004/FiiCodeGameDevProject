@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Pixelplacement;
+using TMPro;
 
 public class UI : MonoBehaviour
 {
     public Image Background, EndScreen, Menu;
     private GameManager Manager;
+
     private bool AnimationCooldown = false;
 
     private void Awake()

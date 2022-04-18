@@ -56,8 +56,15 @@ public class LevelButton : MonoBehaviour
     {
         int currentLevel = PlayerPrefs.GetInt("Level");
 
-        if(isSpecial)
+        if(isSpecial && level>currentLevel)
+        {
+            GetComponent<Button>().enabled = false;
             GetComponent<Image>().sprite = Special;
+        }
+        else if(isSpecial && level<=currentLevel)
+        {
+            GetComponent<Image>().sprite = Special;
+        }
         else if(level == currentLevel)
             GetComponent<Image>().sprite = Current;
         else if(level<currentLevel)

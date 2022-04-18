@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using
+    TMPro;
 public class GameManager : MonoBehaviour
 {
     private int Level;
@@ -11,11 +13,13 @@ public class GameManager : MonoBehaviour
     public bool HasChestStar = false;
 
     public GameObject[] UiStars;
+    public TMP_Text Congrats;
 
     private void Awake()
     {
-        AudioManager.StopAll();
-        AudioManager.Play("Level");
+        AudioManager.Stop("Background");
+        if(!AudioManager.IsPlaying("Level")) AudioManager.Play("Level");
+
 
         Level = int.Parse(SceneManager.GetActiveScene().name.Replace("Level", ""));
 
@@ -41,7 +45,18 @@ public class GameManager : MonoBehaviour
         if (!HasCableStar) Stars--;
         if (HasChestStar) Stars++;
 
-
+        switch(Stars)
+        {
+            case 1:
+                Congrats.text = "Awsome!";
+                break;
+            case 2:
+                Congrats.text = "Very Good!";
+                break;
+            case 3:
+                Congrats.text = "Perfect!";
+                break;
+        }
 
         try { if (Stars < 3) FindObjectOfType<Energy>().UseEnergy(); }
         catch(NullReferenceException) { Debug.LogWarning("Energy not reduced due to entering Level through Level Scene and not Menu Scene!"); }

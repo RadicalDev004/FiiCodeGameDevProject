@@ -30,7 +30,6 @@ public class TileLayout : MonoBehaviour
         {
             tiles[i] = transform.GetChild(i);
             tiles[i].GetComponent<Tile>().number = i;
-            tiles[i].GetComponent<TileEditor>().shouldWork = false;
         }
 
         initialPos = tiles[0].position;

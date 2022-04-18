@@ -34,12 +34,6 @@ public class Tile : MonoBehaviour
 
     private void Update()
     {
-        switch (type)
-        {
-            case Type.none: gameObject.GetComponent<MeshRenderer>().sharedMaterial.color = new Color(1, 1, 1, 0.25f); break;
-        }
-
-
         if (type == Type.cable && gameManager.HasCableStar == false) { Destroy(Steps); type = Type.none; }
     }
 

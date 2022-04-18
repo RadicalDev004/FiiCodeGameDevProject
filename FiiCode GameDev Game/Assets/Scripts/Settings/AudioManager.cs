@@ -48,6 +48,11 @@ public class AudioManager : MonoBehaviour
             s.source.Stop();
         }
     }
+    public bool IsPlayingSound(string name)
+    {
+        Sound d = Array.Find(sounds, sound => sound.name == name);
+        return d.source.isPlaying;
+    }
 
 
     public static void Play(string name)
@@ -83,5 +88,18 @@ public class AudioManager : MonoBehaviour
         {
             Debug.LogWarning("Entering game from level scene can lead to loss of Audio and is not reccomended!");
         }
+    }
+
+    public static bool IsPlaying(string name)
+    {
+        try
+        {
+            return Instance.IsPlayingSound(name);
+        }
+        catch(NullReferenceException)
+        {
+            Debug.LogWarning("Entering game from level scene can lead to loss of Audio and is not reccomended!");
+        }
+        return false;
     }
 }

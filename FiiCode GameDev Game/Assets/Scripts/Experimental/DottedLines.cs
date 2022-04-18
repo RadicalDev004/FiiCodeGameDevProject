@@ -15,7 +15,7 @@ public class DottedLines : MonoBehaviour
             Vector2 desiredPos = (firstPos + secondPos) / 2;
             GameObject newLine = Instantiate(line, transform);
             newLine.GetComponent<RectTransform>().anchoredPosition = desiredPos;
-            newLine.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, -45 + 15 * i);
+            newLine.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, -45 + 17 * i +i*3);
         }
     }
 }
