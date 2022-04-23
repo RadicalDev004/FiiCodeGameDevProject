@@ -1,8 +1,8 @@
 using System.Collections;
-using
-    TMPro;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 public class GameManager : MonoBehaviour
 {
     public int Level;
@@ -20,9 +20,9 @@ public class GameManager : MonoBehaviour
         if (!AudioManager.IsPlaying("Level")) AudioManager.Play("Level");
 
 
-        Level = int.Parse(SceneManager.GetActiveScene().name.Replace("Level", ""));
+        try { Level = int.Parse(SceneManager.GetActiveScene().name.Replace("Level", "")); }
+        catch(FormatException) { Debug.LogError("$#@*%$@%$#$%%&*@%ERYD_WKC@C"); }
 
-        Application.targetFrameRate = 60;
 
         HasCableStar = true;
         HasChestStar = false;
@@ -86,4 +86,6 @@ public class GameManager : MonoBehaviour
             count--;
         }
     }
+
+    
 }

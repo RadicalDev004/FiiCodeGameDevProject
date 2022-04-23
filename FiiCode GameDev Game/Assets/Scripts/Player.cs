@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
 
         yield return new WaitForSeconds(TimeToMove);
 
-        if (IsNextTileEnd(nextTile)) { Fireworks.transform.position = transform.position; Fireworks.Play(); AudioManager.Play("Win"); Look(Directions.down, 0.5f); End(); yield break; }
+        if (IsNextTileEnd(nextTile)) { Win(); End(); yield break; }
 
         if (IsNextTileStar(nextTile))
         {
@@ -255,6 +255,7 @@ public class Player : MonoBehaviour
         TileLayout.tiles[tileAt].GetComponentInChildren<Star>().GetCollected(1);
         TileLayout.tiles[tileAt].GetComponent<Tile>().isChest = false;
         AudioManager.Play("Star");
+        Debug.Log(AudioManager.IsPlaying("Star"));
     }
 
     public void ShakeCamera()
@@ -275,6 +276,12 @@ public class Player : MonoBehaviour
         if (!gameManager.HasCableStar) return;
 
         TileLayout.tiles[tile].GetComponent<Tile>().SpawnSteps(90 + (float)dir * 90);
+    }
+    private void Win()
+    {
+        Fireworks.transform.position = transform.position; Fireworks.Play(); 
+        AudioManager.Play("Win"); 
+        Look(Directions.down, 0.5f);
     }
 
 }

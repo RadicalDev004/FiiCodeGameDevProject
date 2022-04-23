@@ -34,6 +34,16 @@ public class AudioManager : MonoBehaviour
             return;
         d.source.Play();
     }
+    public void PlayReversedSound(string name)
+    {
+        Sound d = Array.Find(sounds, sound => sound.name == name);
+        if (d == null)
+            return;
+
+        d.source.pitch = -1;
+        d.source.timeSamples = d.clip.samples - 1;
+        d.source.Play();
+    }
     public void StopSound(string name)
     {
         Sound d = Array.Find(sounds, sound => sound.name == name);
@@ -59,7 +69,15 @@ public class AudioManager : MonoBehaviour
     {
         try
         {
-            Instance.PlaySound(name);
+            if(Instance.IsSecretScene())
+            {
+                Instance.PlayReversedSound(name);
+            }
+            else
+            {
+                Instance.PlaySound(name);
+            }
+
         }
         catch (NullReferenceException)
         {
@@ -101,5 +119,10 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Entering game from level scene will lead to loss of Audio and is not reccomended!");
         }
         return false;
+    }
+
+    public bool IsSecretScene()
+    {
+        return UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LevelSecret";
     }
 }

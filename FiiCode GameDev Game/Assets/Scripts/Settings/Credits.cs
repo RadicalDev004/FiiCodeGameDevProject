@@ -23,6 +23,7 @@ public class Credits : MonoBehaviour
         Cr.SetActive(false);
         AudioManager.Play("Background");
     }
-    public void LoadSecret(string scene) => UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
+
+    public void LoadSecret() => UnityEngine.SceneManagement.SceneManager.LoadScene("LevelSecret");    
 
 }
