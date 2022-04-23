@@ -3,6 +3,7 @@ using RadicalKit;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Menu : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Menu : MonoBehaviour
 
     public Image Background;
     public Image Settings, Shop, Question;
+    public Image Load;
 
     public TMP_Text StarsCount, EnergyCount, EnergyTimer;
 
@@ -21,8 +23,9 @@ public class Menu : MonoBehaviour
     private void Awake()
     {
         Debug.LogWarning("Map scroll only supported on mobile!");
+        StartCoroutine(LoadSceneStart());
 
-        Application.targetFrameRate = 60;
+     
         Time.timeScale = 1;
 
         PrepareUI();
@@ -127,6 +130,7 @@ public class Menu : MonoBehaviour
         for (int i = 1; i <= LevelsCount; i++)
         {
             SCount += PlayerPrefs.GetInt("LevelStars" + i);
+            Debug.Log(i + " " + PlayerPrefs.GetInt("LevelStars" + i) + " " + SCount);
         }
     }
 
@@ -136,5 +140,19 @@ public class Menu : MonoBehaviour
         {
             imgs[i].GetComponent<RectTransform>().localScale = Vector3.zero;
         }
+    }
+
+    private IEnumerator LoadSceneStart()
+    {
+        Load.gameObject.SetActive(true);
+
+        Load.fillAmount = 1;
+        while (Load.fillAmount > 0)
+        {
+            Load.fillAmount -= 0.025f;
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+
+        Load.gameObject.SetActive(false);
     }
 }

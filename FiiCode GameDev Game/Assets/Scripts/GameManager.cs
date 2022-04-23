@@ -1,12 +1,11 @@
 using System.Collections;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using System;
 using
     TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-    private int Level;
+    public int Level;
     private int Stars = 2;
 
     public bool HasCableStar = true;
@@ -18,7 +17,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         AudioManager.Stop("Background");
-        if(!AudioManager.IsPlaying("Level")) AudioManager.Play("Level");
+        if (!AudioManager.IsPlaying("Level")) AudioManager.Play("Level");
 
 
         Level = int.Parse(SceneManager.GetActiveScene().name.Replace("Level", ""));
@@ -45,7 +44,7 @@ public class GameManager : MonoBehaviour
         if (!HasCableStar) Stars--;
         if (HasChestStar) Stars++;
 
-        switch(Stars)
+        switch (Stars)
         {
             case 1:
                 Congrats.text = "Awsome!";
@@ -58,15 +57,14 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        try { if (Stars < 3) FindObjectOfType<Energy>().UseEnergy(); }
-        catch(NullReferenceException) { Debug.LogWarning("Energy not reduced due to entering Level through Level Scene and not Menu Scene!"); }
+
 
         if (PlayerPrefs.GetInt(("LevelStars" + Level).ToString()) < Stars)
             PlayerPrefs.SetInt(("LevelStars" + Level).ToString(), Stars);
 
         Debug.Log(("LevelStars" + Level) + " " + Stars);
-        PlayerPrefs.SetInt("Level", Level + 1);
-
+        if (PlayerPrefs.GetInt("Level") <= Level) PlayerPrefs.SetInt("Level", Level + 1);
+        Debug.Log(PlayerPrefs.GetInt("Level"));
         StartCoroutine(StarAnimation(UiStars, 1, Stars));
 
         //SceneManager.LoadScene("Level");

@@ -5,11 +5,13 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Pixelplacement;
 using TMPro;
+using System;
 
 public class UI : MonoBehaviour
 {
     public Image Background, EndScreen, Menu;
     private GameManager Manager;
+    public Image Load;
 
     private bool AnimationCooldown = false;
 
@@ -17,6 +19,7 @@ public class UI : MonoBehaviour
     {
         PrepareUI();
         Manager = FindObjectOfType<GameManager>();
+        StartCoroutine(LoadSceneStart());
     }
 
 
@@ -33,12 +36,18 @@ public class UI : MonoBehaviour
 
     public void ChangeSceneGeneric(string name)
     {
-        SceneManager.LoadScene(name);
+        StartCoroutine(LoadScene(name));
     }
 
     public void RestartGameButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        AudioManager.Play("ButtonPress");
+        if (Energy.currentEnergy == 0) { ChangeSceneGeneric("Menu"); return; }
+
+        try { FindObjectOfType<Energy>().UseEnergy(); }
+        catch (NullReferenceException) { Debug.LogWarning("Energy not reduced due to entering Level through Level Scene and not Menu Scene!"); }
+
+        ChangeSceneGeneric(SceneManager.GetActiveScene().name);
     }
 
     public void OpenMenuButton()
@@ -52,7 +61,8 @@ public class UI : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene("Level" + PlayerPrefs.GetInt("Level"));
+        if (Energy.currentEnergy == 0) ChangeSceneGeneric("Menu");
+        ChangeSceneGeneric("Level" + (Manager.Level+1).ToString());
     }
 
 
@@ -119,4 +129,29 @@ public class UI : MonoBehaviour
         Invoke(nameof(ResetAnimationCooldown), 0.5f);
     }
     private void ResetAnimationCooldown() => AnimationCooldown = false;
+
+    private IEnumerator LoadSceneStart()
+    {
+        Load.gameObject.SetActive(true);
+        Load.fillAmount = 1;
+        while (Load.fillAmount > 0)
+        {
+            Load.fillAmount -= 0.025f;
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+        
+        Load.gameObject.SetActive(false);
+    }
+    private IEnumerator LoadScene(string name)
+    {
+        Load.gameObject.SetActive(true);
+        Load.fillAmount = 0;
+        while (Load.fillAmount < 1)
+        {
+            Load.fillAmount += 0.025f;
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+        yield return new WaitForSecondsRealtime(1);
+        SceneManager.LoadScene(name);
+    }
 }

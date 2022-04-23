@@ -63,7 +63,7 @@ public class AudioManager : MonoBehaviour
         }
         catch (NullReferenceException)
         {
-            Debug.LogWarning("Entering game from level scene can lead to loss of Audio and is not reccomended!");
+            Debug.LogWarning("Entering game from level scene will lead to loss of Audio and is not reccomended!");
         }
 
     }
@@ -75,7 +75,7 @@ public class AudioManager : MonoBehaviour
         }
         catch (NullReferenceException)
         {
-            Debug.LogWarning("Entering game from level scene can lead to loss of Audio and is not reccomended!");
+            Debug.LogWarning("Entering game from level scene will lead to loss of Audio and is not reccomended!");
         }
     }
     public static void StopAll()
@@ -86,7 +86,7 @@ public class AudioManager : MonoBehaviour
         }
         catch (NullReferenceException)
         {
-            Debug.LogWarning("Entering game from level scene can lead to loss of Audio and is not reccomended!");
+            Debug.LogWarning("Entering game from level scene will lead to loss of Audio and is not reccomended!");
         }
     }
 
@@ -98,7 +98,7 @@ public class AudioManager : MonoBehaviour
         }
         catch(NullReferenceException)
         {
-            Debug.LogWarning("Entering game from level scene can lead to loss of Audio and is not reccomended!");
+            Debug.LogWarning("Entering game from level scene will lead to loss of Audio and is not reccomended!");
         }
         return false;
     }

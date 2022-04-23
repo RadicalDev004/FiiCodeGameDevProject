@@ -10,9 +10,9 @@ public class Energy : MonoBehaviour
     public static string energyText;
     public static string timerText;
 
-    private int maxEnergy = 5;
+    private int maxEnergy = 15;
     public static int currentEnergy;
-    private int restoreDuration = 5;
+    private int restoreDuration = 2;
 
     private DateTime nextEnergyTime;
     private DateTime lastEnergyTime;
@@ -23,7 +23,7 @@ public class Energy : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("currentEnergy"))
         {
-            PlayerPrefs.SetInt("currentEnergy", 5);
+            PlayerPrefs.SetInt("currentEnergy", 15);
             Load();
             StartCoroutine(RestoreEnergy());
         }
