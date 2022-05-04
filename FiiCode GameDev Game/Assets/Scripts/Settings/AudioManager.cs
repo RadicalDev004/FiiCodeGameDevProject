@@ -32,6 +32,8 @@ public class AudioManager : MonoBehaviour
         Sound d = Array.Find(sounds, sound => sound.name == name);
         if (d == null)
             return;
+
+        d.source.pitch = 1f;
         d.source.Play();
     }
     public void PlayReversedSound(string name)
@@ -41,7 +43,6 @@ public class AudioManager : MonoBehaviour
             return;
 
         d.source.pitch = -1;
-        d.source.timeSamples = d.clip.samples - 1;
         d.source.Play();
     }
     public void StopSound(string name)
@@ -49,6 +50,7 @@ public class AudioManager : MonoBehaviour
         Sound d = Array.Find(sounds, sound => sound.name == name);
         if (d == null)
             return;
+
         d.source.Stop();
     }
     public void StopAllSounds()

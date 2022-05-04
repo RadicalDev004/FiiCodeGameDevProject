@@ -17,7 +17,7 @@ public class Credits : MonoBehaviour
         LeanTween.move(Cr.GetComponent<RectTransform>(), new Vector3(0, -Cr.GetComponent<RectTransform>().anchoredPosition.y, 0), time);
         Invoke(nameof(ResetCredits), time+1);
     }
-    private void ResetCredits()
+    public void ResetCredits()
     {
         Cr.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -Cr.GetComponent<RectTransform>().anchoredPosition.y, 0);
         Cr.SetActive(false);

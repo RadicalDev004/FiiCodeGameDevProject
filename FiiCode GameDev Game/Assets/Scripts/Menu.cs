@@ -130,7 +130,7 @@ public class Menu : MonoBehaviour
         for (int i = 1; i <= LevelsCount; i++)
         {
             SCount += PlayerPrefs.GetInt("LevelStars" + i);
-            Debug.Log(i + " " + PlayerPrefs.GetInt("LevelStars" + i) + " " + SCount);
+            //Debug.Log(i + " " + PlayerPrefs.GetInt("LevelStars" + i) + " " + SCount);
         }
     }
 

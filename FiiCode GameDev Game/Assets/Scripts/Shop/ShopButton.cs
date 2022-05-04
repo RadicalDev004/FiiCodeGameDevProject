@@ -20,7 +20,7 @@ public class ShopButton : MonoBehaviour
         else GetComponent<UnityEngine.UI.Image>().sprite = Shop.UnSelected;
     }
 
-    private bool IsValid() => FindObjectOfType<Menu>().SCount > Cost;
+    private bool IsValid() => FindObjectOfType<Menu>().SCount >= Cost;
     private bool IsSelected() => PlayerPrefs.GetInt("SelectedSkin") == Nr;
     private void Select() => PlayerPrefs.SetInt("SelectedSkin", Nr);
 

@@ -12,6 +12,7 @@ public class UI : MonoBehaviour
     public Image Background, EndScreen, Menu;
     private GameManager Manager;
     public Image Load;
+    public TMP_Text Level;
 
     private bool AnimationCooldown = false;
 
@@ -20,6 +21,7 @@ public class UI : MonoBehaviour
         PrepareUI();
         Manager = FindObjectOfType<GameManager>();
         StartCoroutine(LoadSceneStart());
+        Level.text = "Level " + SceneManager.GetActiveScene().name.Replace("Level", "");
     }
 
 
