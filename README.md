@@ -13,5 +13,5 @@ giving an in-game advantage, purely being cosmetic.
 
   The premise of the game is simple, get to the flag! You are able to move Rocks but not Meteorites. Also
 stepping over previously encountered tiles will lead to the loss of a Star. Want to make thing even more difficult?
-try grabbing the Star in the level to reach a Perfect score of 3 stars!
+Try grabbing the Star in the level to reach a Perfect score of 3 stars!
 
