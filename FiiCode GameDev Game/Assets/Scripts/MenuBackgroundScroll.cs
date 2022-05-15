@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MenuBackgroundScroll : MonoBehaviour//, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class MenuBackgroundScroll : MonoBehaviour, IPointerDownHandler
 {
     public RectTransform Background;
     public Vector2 startPos, currentPos;
@@ -16,6 +16,7 @@ public class MenuBackgroundScroll : MonoBehaviour//, IDragHandler, IBeginDragHan
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         PauseScroll = 0;
         if (!PlayerPrefs.HasKey("Level"))
         {
@@ -122,5 +123,10 @@ public class MenuBackgroundScroll : MonoBehaviour//, IDragHandler, IBeginDragHan
     public void EnableMapScroll()
     {
         PauseScroll = 0;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        EnableMapScroll();
     }
 }

@@ -16,6 +16,4 @@ public class manageMapScroll : MonoBehaviour, IPointerEnterHandler, IPointerExit
         MenuBackgroundScroll.PauseScroll = 0;
         Debug.Log("Start Map Scroll");
     }
-
-    
 }

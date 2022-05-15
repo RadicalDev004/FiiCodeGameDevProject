@@ -5077,6 +5077,7 @@ GameObject:
   - component: {fileID: 243407834}
   - component: {fileID: 243407836}
   - component: {fileID: 243407837}
+  - component: {fileID: 243407838}
   m_Layer: 5
   m_Name: SettingsImg
   m_TagString: Untagged
@@ -5208,6 +5209,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acae7f9d9e6181048aee16b13078a4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &243407838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243407832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1186119025}
+          m_TargetAssemblyTypeName: MenuBackgroundScroll, Assembly-CSharp
+          m_MethodName: CancelMapScroll
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &245956154
 GameObject:
   m_ObjectHideFlags: 0
@@ -19943,7 +19973,6 @@ GameObject:
   - component: {fileID: 993578835}
   - component: {fileID: 993578836}
   - component: {fileID: 993578837}
-  - component: {fileID: 993578838}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -20061,35 +20090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acae7f9d9e6181048aee16b13078a4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &993578838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 993578833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 5
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1186119025}
-          m_TargetAssemblyTypeName: MenuBackgroundScroll, Assembly-CSharp
-          m_MethodName: CancelMapScroll
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1002996713
 GameObject:
   m_ObjectHideFlags: 0
