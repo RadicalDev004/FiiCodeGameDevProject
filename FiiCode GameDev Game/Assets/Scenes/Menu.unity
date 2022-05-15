@@ -4936,6 +4936,7 @@ GameObject:
   - component: {fileID: 240544224}
   - component: {fileID: 240544223}
   - component: {fileID: 240544225}
+  - component: {fileID: 240544226}
   m_Layer: 5
   m_Name: QuestionImg
   m_TagString: Untagged
@@ -5051,6 +5052,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &240544226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240544221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acae7f9d9e6181048aee16b13078a4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &243407832
 GameObject:
   m_ObjectHideFlags: 0
@@ -5063,6 +5076,7 @@ GameObject:
   - component: {fileID: 243407835}
   - component: {fileID: 243407834}
   - component: {fileID: 243407836}
+  - component: {fileID: 243407837}
   m_Layer: 5
   m_Name: SettingsImg
   m_TagString: Untagged
@@ -5182,6 +5196,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &243407837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243407832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acae7f9d9e6181048aee16b13078a4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &245956154
 GameObject:
   m_ObjectHideFlags: 0
@@ -9804,6 +9830,7 @@ GameObject:
   - component: {fileID: 498378992}
   - component: {fileID: 498378991}
   - component: {fileID: 498378990}
+  - component: {fileID: 498378993}
   m_Layer: 5
   m_Name: QuestionUI
   m_TagString: Untagged
@@ -9925,6 +9952,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498378988}
   m_CullTransparentMesh: 1
+--- !u!114 &498378993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498378988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acae7f9d9e6181048aee16b13078a4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &498563253
 GameObject:
   m_ObjectHideFlags: 0
@@ -16706,6 +16745,7 @@ GameObject:
   - component: {fileID: 826437264}
   - component: {fileID: 826437263}
   - component: {fileID: 826437265}
+  - component: {fileID: 826437266}
   m_Layer: 5
   m_Name: ShopImg
   m_TagString: Untagged
@@ -16819,6 +16859,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &826437266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826437261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acae7f9d9e6181048aee16b13078a4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &831441002
 GameObject:
   m_ObjectHideFlags: 0
@@ -19731,6 +19783,7 @@ GameObject:
   - component: {fileID: 986212817}
   - component: {fileID: 986212816}
   - component: {fileID: 986212819}
+  - component: {fileID: 986212820}
   m_Layer: 5
   m_Name: ShopUI
   m_TagString: Untagged
@@ -19866,6 +19919,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Selected: {fileID: 21300000, guid: 412408502993b2747abe7cb689aea613, type: 3}
   UnSelected: {fileID: 21300000, guid: 98247588545425f4598d56ef3db02d0e, type: 3}
+--- !u!114 &986212820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986212814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acae7f9d9e6181048aee16b13078a4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &993578833
 GameObject:
   m_ObjectHideFlags: 0
@@ -19877,6 +19942,8 @@ GameObject:
   - component: {fileID: 993578834}
   - component: {fileID: 993578835}
   - component: {fileID: 993578836}
+  - component: {fileID: 993578837}
+  - component: {fileID: 993578838}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -19982,6 +20049,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: {fileID: 1250533897}
+--- !u!114 &993578837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993578833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acae7f9d9e6181048aee16b13078a4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &993578838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993578833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1186119025}
+          m_TargetAssemblyTypeName: MenuBackgroundScroll, Assembly-CSharp
+          m_MethodName: CancelMapScroll
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1002996713
 GameObject:
   m_ObjectHideFlags: 0
@@ -22818,6 +22926,7 @@ GameObject:
   - component: {fileID: 1110600052}
   - component: {fileID: 1110600053}
   - component: {fileID: 1110600054}
+  - component: {fileID: 1110600055}
   m_Layer: 5
   m_Name: SettingsUI
   m_TagString: Untagged
@@ -22966,6 +23075,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bceddfcbe1a4ff4e9e7d0183d8601d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1110600055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110600048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acae7f9d9e6181048aee16b13078a4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1113714537

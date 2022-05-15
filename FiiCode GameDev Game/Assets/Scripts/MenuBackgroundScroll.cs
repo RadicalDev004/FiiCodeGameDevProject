@@ -12,9 +12,12 @@ public class MenuBackgroundScroll : MonoBehaviour//, IDragHandler, IBeginDragHan
     private Vector2 firstTouchPrevPos, secondTouchPrevPos;
     private float touchesPrevPosDifference, touchesCurPosDifference, zoomModifier;
 
+    public static int PauseScroll;
+
     private void Awake()
     {
-        if(!PlayerPrefs.HasKey("Level"))
+        PauseScroll = 0;
+        if (!PlayerPrefs.HasKey("Level"))
         {
             PlayerPrefs.SetInt("Level", 1);
         }
@@ -28,6 +31,9 @@ public class MenuBackgroundScroll : MonoBehaviour//, IDragHandler, IBeginDragHan
 
     private void Update()
     {
+        if (PauseScroll == 1) return;
+        Debug.Log(PauseScroll);
+
         left = Background.sizeDelta.x / 2 - 960;
         right = -left;
 
@@ -106,5 +112,15 @@ public class MenuBackgroundScroll : MonoBehaviour//, IDragHandler, IBeginDragHan
     private void SnapToPos(float posX, float posY)
     {
 
+    }
+
+
+    public void CancelMapScroll()
+    {
+        PauseScroll = 1;
+    }
+    public void EnableMapScroll()
+    {
+        PauseScroll = 0;
     }
 }
