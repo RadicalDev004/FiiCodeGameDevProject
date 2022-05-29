@@ -154,7 +154,8 @@ public class Energy : MonoBehaviour
 
     public void GiveEnergy()
     {
-        Load();
+        currentEnergy++;
+        Save();
         UpdateEnergy();
         UpdateEnergyTimer();
     }

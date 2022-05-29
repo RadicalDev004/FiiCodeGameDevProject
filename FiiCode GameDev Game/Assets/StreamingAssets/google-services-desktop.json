@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "670370515349",
+    "firebase_url": "https://moon-puzzles-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "moon-puzzles",
+    "storage_bucket": "moon-puzzles.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670370515349:android:b721a611dd2fa22c7d4e9c",
+        "android_client_info": {
+          "package_name": "com.radicalDev.MoonPuzzles"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "670370515349-9v45kvcng27g41k43nnkracgpkrni2pj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk0_oMaiLfAMURiNjLCZQhT2zP4-WQzXM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "670370515349-9v45kvcng27g41k43nnkracgpkrni2pj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

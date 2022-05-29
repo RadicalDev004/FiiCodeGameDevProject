@@ -20,7 +20,6 @@ namespace RadicalKit
             return new Vector3(yourTransform.x, yourTransform.y, newZ);
         }
 
-
         //Color
         public static Color32 ColorR(Color32 toChange, byte Value)
         {

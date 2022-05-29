@@ -7,13 +7,13 @@ public class manageMapScroll : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerEnter(PointerEventData eventData)
     {
         MenuBackgroundScroll.PauseScroll = 1;
-        Debug.Log("Stop Map Scroll");
-        Debug.LogWarning(MenuBackgroundScroll.PauseScroll);
+        //Debug.Log("Stop Map Scroll");
+        //Debug.LogWarning(MenuBackgroundScroll.PauseScroll);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         MenuBackgroundScroll.PauseScroll = 0;
-        Debug.Log("Start Map Scroll");
+        //Debug.Log("Start Map Scroll");
     }
 }

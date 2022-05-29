@@ -10,10 +10,10 @@ public class Menu : MonoBehaviour
     public int LevelsCount;
 
     public Image Background;
-    public Image Settings, Shop, Question;
+    public Image Settings, Shop, Question, NewContent, CoinsShop;
     public Image Load;
 
-    public TMP_Text StarsCount, EnergyCount, EnergyTimer;
+    public TMP_Text StarsCount, EnergyCount, EnergyTimer, CoinsCount;
 
     public int SCount;
 
@@ -25,6 +25,10 @@ public class Menu : MonoBehaviour
         Debug.LogWarning("Map scroll only supported on mobile!");
         StartCoroutine(LoadSceneStart());
 
+        if(!PlayerPrefs.HasKey("OnlineCurrency"))
+        {
+            PlayerPrefs.SetInt("OnlineCurrency", 0);
+        }
      
         Time.timeScale = 1;
 
@@ -38,6 +42,7 @@ public class Menu : MonoBehaviour
     {
         AudioManager.StopAll();
         AudioManager.Play("Background");
+
     }
 
 
@@ -45,47 +50,22 @@ public class Menu : MonoBehaviour
     {
         EnergyCount.text = Energy.energyText;
         EnergyTimer.text = Energy.timerText;
+
+
+        CoinsCount.text = PlayerPrefs.GetInt("OnlineCurrency").ToString("#,#").Replace(',', ' ');
     }
 
-    public void OpenSettings()
+    public void OpenGenericPanel(Image img)
     {
         AudioManager.Play("OpenPanel");
         FillInBackground();
-        OpenTab(Settings);
+        OpenTab(img);
     }
-    public void CloseSettings()
+    public void CloseGenericPanel(Image img)
     {
         AudioManager.Play("ClosePanel");
         FillOutBackground();
-        CloseTab(Settings);
-    }
-
-
-    public void OpenShop()
-    {
-        AudioManager.Play("OpenPanel");
-        FillInBackground();
-        OpenTab(Shop);
-    }
-    public void CloseShop()
-    {
-        AudioManager.Play("ClosePanel");
-        FillOutBackground();
-        CloseTab(Shop);
-    }
-
-
-    public void OpenQuestion()
-    {
-        AudioManager.Play("OpenPanel");
-        FillInBackground();
-        OpenTab(Question);
-    }
-    public void CloseQuestion()
-    {
-        AudioManager.Play("ClosePanel");
-        FillOutBackground();
-        CloseTab(Question);
+        CloseTab(img);
     }
 
 
@@ -122,7 +102,7 @@ public class Menu : MonoBehaviour
         Background.color = Change.ColorA(Background.color, 0);
         Background.gameObject.SetActive(false);
 
-        Minimize(Settings, Shop, Question);
+        Minimize(Settings, Shop, Question, NewContent, CoinsShop);
     }
 
     private void GetStarsCount()

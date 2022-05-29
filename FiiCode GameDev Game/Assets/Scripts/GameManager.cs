@@ -1,8 +1,8 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System;
 public class GameManager : MonoBehaviour
 {
     public int Level;
@@ -17,11 +17,18 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         AudioManager.Stop("Background");
-        if (!AudioManager.IsPlaying("Level")) AudioManager.Play("Level");
+
+        if (SceneManager.GetActiveScene().name == "LevelMaker")
+            AudioManager.Play("MapMakerBackground");
+        else
+        {
+            if (!AudioManager.IsPlaying("Level")) AudioManager.Play("Level");
+        }
+
 
 
         try { Level = int.Parse(SceneManager.GetActiveScene().name.Replace("Level", "")); }
-        catch(FormatException) { Debug.LogError("$#@*%$@%$#$%%&*@%ERYD_WKC@C"); }
+        catch (FormatException) { }
 
 
         HasCableStar = true;
@@ -57,7 +64,15 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-
+        if (Stars == 3 && SceneManager.GetActiveScene().name == "LevelMaker")
+        {
+            PlayerPrefs.SetInt("IsPlayTested", 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if(Stars == 3 && SceneManager.GetActiveScene().name == "LevelOnline")
+        {
+            FindObjectOfType<LevelLoader>().Recievereward();
+        }
 
         if (PlayerPrefs.GetInt(("LevelStars" + Level).ToString()) < Stars)
             PlayerPrefs.SetInt(("LevelStars" + Level).ToString(), Stars);
@@ -66,6 +81,8 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.GetInt("Level") <= Level) PlayerPrefs.SetInt("Level", Level + 1);
         Debug.Log(PlayerPrefs.GetInt("Level"));
         StartCoroutine(StarAnimation(UiStars, 1, Stars));
+
+        FindObjectOfType<Energy>().UseEnergy();
 
         //SceneManager.LoadScene("Level");
     }
@@ -87,5 +104,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+
 }

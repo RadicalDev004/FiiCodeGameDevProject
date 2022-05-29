@@ -37,28 +37,43 @@ public class Tile : MonoBehaviour
         if (type == Type.cable && gameManager.HasCableStar == false) { Destroy(Steps); type = Type.none; }
     }
 
-    private void SpawnRock()
+    public void SpawnNothing()
+    {
+        Destroy(Rock);
+        Rock = null;
+
+        Destroy(Chest);
+        Chest = null;
+
+        Destroy(End);
+        End = null;
+
+        Destroy(Immutable);
+        Immutable = null;
+    }
+
+    public void SpawnRock()
     {
         Rock = Instantiate(parent.Rock);
         Rock.SetActive(true);
         Rock.transform.parent = transform;
         Rock.transform.localPosition = parent.RockPos;
     }
-    private void SpawnChest()
+    public void SpawnChest()
     {
         Chest = Instantiate(parent.Chest);
         Chest.SetActive(true);
         Chest.transform.parent = transform;
         Chest.transform.localPosition = parent.StarPos;
     }
-    private void SpawnEnd()
+    public void SpawnEnd()
     {
         End = Instantiate(parent.End);
         End.SetActive(true);
         End.transform.parent = transform;
         End.transform.localPosition = parent.EndPos;
     }
-    private void SpawnImmutable()
+    public void SpawnImmutable()
     {
         Immutable = Instantiate(parent.Immutable);
         Immutable.SetActive(true);

@@ -17,6 +17,7 @@ public class MenuBackgroundScroll : MonoBehaviour, IPointerDownHandler
     private void Awake()
     {
         Application.targetFrameRate = 60;
+
         PauseScroll = 0;
         if (!PlayerPrefs.HasKey("Level"))
         {
@@ -33,7 +34,7 @@ public class MenuBackgroundScroll : MonoBehaviour, IPointerDownHandler
     private void Update()
     {
         if (PauseScroll == 1) return;
-        Debug.Log(PauseScroll);
+        //Debug.Log(PauseScroll);
 
         left = Background.sizeDelta.x / 2 - 960;
         right = -left;

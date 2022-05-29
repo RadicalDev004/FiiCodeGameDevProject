@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 016d09e479acdb448ae5025b08d9032e
   - enabled: 1
+    path: Assets/Scenes/LevelMaker.unity
+    guid: 9d2094dae1955054eb3798d7102964a7
+  - enabled: 1
+    path: Assets/Scenes/LevelOnline.unity
+    guid: a42e4c7c99e5e42499881d83801387ea
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 16653e88538dcc848a487579faa90aa7
   - enabled: 1

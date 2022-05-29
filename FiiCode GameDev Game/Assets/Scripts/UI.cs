@@ -1,11 +1,11 @@
-using RadicalKit;
-using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using Pixelplacement;
-using TMPro;
+using RadicalKit;
 using System;
+using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
@@ -16,12 +16,19 @@ public class UI : MonoBehaviour
 
     private bool AnimationCooldown = false;
 
-    private void Awake()
+    private void Start()
     {
         PrepareUI();
         Manager = FindObjectOfType<GameManager>();
         StartCoroutine(LoadSceneStart());
-        Level.text = "Level " + SceneManager.GetActiveScene().name.Replace("Level", "");
+
+        if (SceneManager.GetActiveScene().name == "LevelOnline")
+        {
+            Level.text = PlayerPrefs.GetString("NameLoadedLevel");
+        }
+        else
+
+            Level.text = "Level " + SceneManager.GetActiveScene().name.Replace("Level", "");
     }
 
 
@@ -64,7 +71,7 @@ public class UI : MonoBehaviour
     public void NextLevel()
     {
         if (Energy.currentEnergy == 0) ChangeSceneGeneric("Menu");
-        ChangeSceneGeneric("Level" + (Manager.Level+1).ToString());
+        ChangeSceneGeneric("Level" + (Manager.Level + 1).ToString());
     }
 
 
@@ -120,13 +127,13 @@ public class UI : MonoBehaviour
     private void OpenTab(Image image)
     {
         if (AnimationCooldown) return;
-       
+
         AnimationCooldown = true;
         Tween.LocalScale(image.GetComponent<RectTransform>(), Vector3.one, 0.5f, 0, Tween.EaseInOut);
     }
     private void CloseTab(Image image)
     {
-        
+
         Tween.LocalScale(image.GetComponent<RectTransform>(), Vector3.zero, 0.5f, 0, Tween.EaseInOut);
         Invoke(nameof(ResetAnimationCooldown), 0.5f);
     }
@@ -141,7 +148,7 @@ public class UI : MonoBehaviour
             Load.fillAmount -= 0.025f;
             yield return new WaitForSecondsRealtime(0.01f);
         }
-        
+
         Load.gameObject.SetActive(false);
     }
     private IEnumerator LoadScene(string name)
