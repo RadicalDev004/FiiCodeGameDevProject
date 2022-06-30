@@ -76,10 +76,7 @@ public class LevelEditorUI : MonoBehaviour
 
 
     private void Update()
-    {
-        if (PlayerPrefs.GetInt("IsPlayTested") != 1)
-            PublishB.interactable = false;
-
+    {     
         if(PlayerPrefs.HasKey("PublishCooldown"))
         {            
             TimeSpan t = DateTime.Parse(PlayerPrefs.GetString("PublishCooldown")) - DateTime.Now;
@@ -88,20 +85,32 @@ public class LevelEditorUI : MonoBehaviour
             {
 
                 Cooldown.gameObject.SetActive(true);
-                Cooldown.text = t.Hours + ":" + t.Minutes + ":" + t.Seconds;
+                Cooldown.text = string.Format("{0:D2}:{1:D2}:{2:D2}", t.Hours , t.Minutes ,  t.Seconds);
                 PublishB.interactable = false;
             }
             else
             {
+                if (PlayerPrefs.GetInt("IsPlayTested") != 1)
+                {
+                    PublishB.interactable = false;
+                }
+                else
+                    PublishB.interactable = true;
                 Cooldown.gameObject.SetActive(false);
-                PublishB.interactable = true;
+
             }
         }
         else
         {
-            Cooldown.gameObject.SetActive(false);
-            PublishB.interactable = true;
-        }
+            if (PlayerPrefs.GetInt("IsPlayTested") != 1)
+            {
+                PublishB.interactable = false;
+            }
+            else
+                PublishB.interactable = true;
+
+            Cooldown.gameObject.SetActive(false);                     
+        }        
     }
 
 
@@ -153,6 +162,7 @@ public class LevelEditorUI : MonoBehaviour
 
     public void Publish()
     {
+        Debug.Log(PlayerPrefs.GetInt("IsPlayTested"));
         if (PlayerPrefs.GetString("MapName") == "" || PlayerPrefs.GetString("MapReward") == "")
         {
             AudioManager.Play("Error");

@@ -37,6 +37,7 @@ public class LevelLoader : MonoBehaviour
         {
             AddOnTile(i, int.Parse(LevelCode[i].ToString()));
         }
+        ChangeAstroStartPos(int.Parse(AstroPos));
     }
 
     public void Recievereward()
@@ -119,7 +120,7 @@ public class LevelLoader : MonoBehaviour
     public void RateLevel()
     {
         if (Rate == 0) return;
-
+        Debug.LogWarning("Rating level");
         Destroy(RateB.gameObject);
         StartCoroutine(RateCoroutine());
     }
@@ -129,9 +130,9 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitUntil(() => checkTask.IsCompleted);
 
         DataSnapshot dt = checkTask.Result;
-        if(!dt.Child("Rating").Exists)
+        if(!dt.Child("Ratings").Exists)
         {
-            //Debug.LogError("No child Ratings found, going the other way");
+            Debug.LogError("No child Ratings found, going the other way");
             DbReference.Child("Maps").Child(Name).Child("Ratings").Child("0").SetValueAsync(Rate);
             yield break;
         }
@@ -152,8 +153,22 @@ public class LevelLoader : MonoBehaviour
             long a = d.ChildrenCount;
 
             DbReference.Child("Maps").Child(Name).Child("Ratings").Child(a.ToString()).SetValueAsync(Rate);
-            yield break;
+
+            int total = 0, index = 0;
+            foreach(var child in d.Children)
+            {
+                index++;
+                total += int.Parse(child.Value.ToString());
+            }
+           
+
+            int raw = (int)Mathf.Round((float)((float)total / (float)index));
+            Debug.LogError((float)((float)total / (float)index));
+            DbReference.Child("Maps").Child(Name).Child("RawRating").SetValueAsync(raw);
         }
+
+
+
         Debug.LogError("Rated Level");
     }
 }

@@ -20,6 +20,7 @@ public class Credits : MonoBehaviour
     public void ResetCredits()
     {
         Cr.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -Cr.GetComponent<RectTransform>().anchoredPosition.y, 0);
+        LeanTween.cancel(gameObject);
         Cr.SetActive(false);
         AudioManager.Play("Background");
     }

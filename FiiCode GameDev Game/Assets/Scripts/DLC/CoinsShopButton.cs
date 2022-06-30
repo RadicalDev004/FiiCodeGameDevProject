@@ -36,6 +36,12 @@ public class CoinsShopButton : MonoBehaviour
 
         Prefs.DecreaseInt("OnlineCurrency", Cost);
 
-        FindObjectOfType<Energy>().GiveEnergy();
+        int a = Reward;
+
+        while(a > 0)
+        {
+            FindObjectOfType<Energy>().GiveEnergy();
+            a--;
+        }
     }
 }

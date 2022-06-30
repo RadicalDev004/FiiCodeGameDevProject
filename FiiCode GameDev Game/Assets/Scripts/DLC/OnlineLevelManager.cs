@@ -25,14 +25,15 @@ public class OnlineLevelManager : MonoBehaviour
     {
         yield return new WaitUntil(() => IsReady);
 
-        DbReference.Child("Maps").ChildAdded += HandleChildAdded;
+        //DbReference.Child("Maps").ChildAdded += HandleChildAdded;
+        StartCoroutine(SpawnRandomLevels());
     }
     private void OnDestroy()
     {
-        DbReference.Child("Maps").ChildAdded -= HandleChildAdded;
+        //DbReference.Child("Maps").ChildAdded -= HandleChildAdded;
     }
 
-    public void OnSearchSliderValueChanged()
+    public void OnSearchBUtton()
     {
         if (SearchBar.text == null || SearchBar.text == "") return;
 
@@ -97,22 +98,13 @@ public class OnlineLevelManager : MonoBehaviour
                     g.GetComponent<OnlineLevelButton>().Reward = map.Child("MapReward").Value.ToString();
                     g.GetComponent<OnlineLevelButton>().Difficulty = map.Child("MapDifficulty").Value.ToString();
 
-                    int R = 0;
-                    int nr = 0;
 
-                    foreach (var rating in map.Child("Ratings").Children)
+                    if (map.Child("RawRating").Exists)
                     {
-                        //Debug.Log(d.Child("Ratings").ChildrenCount + " " + d.Child("MapDifficulty").Value.ToString());
-                        R += int.Parse(rating.Value.ToString());
-                        nr++;
+                        Debug.LogWarning(map.Child("RawRating").Value);
+                        g.GetComponent<OnlineLevelButton>().Rating = int.Parse(map.Child("RawRating").Value.ToString());
                     }
 
-                    if (nr == 0)
-                    {
-                        g.GetComponent<OnlineLevelButton>().Rating = 0;
-                    }
-                    else
-                        g.GetComponent<OnlineLevelButton>().Rating = R / nr;
                 }
             }
 
@@ -190,5 +182,62 @@ public class OnlineLevelManager : MonoBehaviour
         IsReady = true;
     }
 
+    int[] arr = new int[5];
+    private IEnumerator SpawnRandomLevels()
+    {
+        var task = DbReference.Child("Maps").GetValueAsync();
+        yield return new WaitUntil(() => task.IsCompleted);
 
+        if (task.Exception != null)
+        {
+            Debug.Log(task.Exception);
+        }
+        else
+        {
+            DataSnapshot d = task.Result;
+
+
+            GetRandomNumbers(ref arr, (int)d.ChildrenCount);
+            int index = 0;
+            foreach(var child in d.Children)
+            {
+                
+                if(Contains(arr, index))
+                {
+                    GameObject g = Instantiate(OnlineLevelTemplate, NormalLevels.transform);
+                    g.SetActive(true);
+                    g.GetComponent<OnlineLevelButton>().Name = child.Key;
+                    g.GetComponent<OnlineLevelButton>().Code = child.Child("MapCode").Value.ToString();
+                    g.GetComponent<OnlineLevelButton>().AstroPos = child.Child("AstroPos").Value.ToString();
+                    g.GetComponent<OnlineLevelButton>().Reward = child.Child("MapReward").Value.ToString();
+                    g.GetComponent<OnlineLevelButton>().Difficulty = child.Child("MapDifficulty").Value.ToString();
+
+                    Debug.Log(child.Key);
+                    if(child.Child("RawRating").Exists)
+                    {
+                        Debug.LogWarning(child.Child("RawRating").Value);
+                        g.GetComponent<OnlineLevelButton>().Rating = int.Parse(child.Child("RawRating").Value.ToString());
+                    }
+
+                }
+                index++;
+            }
+        }
+    }
+
+    private void GetRandomNumbers(ref int[] arr, int Max)
+    {       
+        for (int i = 0; i < arr.Length; i++)
+        {
+            arr[i] = Random.Range(0, Max);
+        }
+    }
+
+    private bool Contains(int[] arr, int nr)
+    {
+        for(int i = 0; i<arr.Length; i++)
+            if (arr[i] == nr)
+                return true;
+        return false;
+    }
 }

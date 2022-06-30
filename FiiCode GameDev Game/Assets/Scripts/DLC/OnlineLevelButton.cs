@@ -33,12 +33,13 @@ public class OnlineLevelButton : MonoBehaviour
 
         LoadLevel.onClick.AddListener(LoadLevelInScene);
 
-        SetRating();
+        StartCoroutine(SetRating());
         SetDifficulty();
     }
 
-    private void SetRating()
+    private IEnumerator SetRating()
     {
+        yield return new WaitUntil(() => Rating != 0);
         for(int i = 0; i < Rating; i++)
         {
             GRating.transform.GetChild(i).gameObject.SetActive(true);

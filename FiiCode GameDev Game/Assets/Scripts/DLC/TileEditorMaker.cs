@@ -1,16 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Firebase;
-using Firebase.Auth;
-using TMPro;
-using UnityEngine.UI;
-using Firebase.Database;
-using Firebase.Extensions;
-using UnityEngine.SceneManagement;
-using UnityEngine.Networking;
 using System;
-using System.IO;
+using UnityEngine;
 
 public class TileEditorMaker : MonoBehaviour
 {
@@ -21,14 +10,15 @@ public class TileEditorMaker : MonoBehaviour
 
     private void Start()
     {
-        if(!PlayerPrefs.HasKey("MapAstroStartPos"))
+       
+        if (!PlayerPrefs.HasKey("MapAstroStartPos"))
         {
             PlayerPrefs.SetInt("MapAstroStartPos", 7);
         }
 
         SetSavedAstroPos();
 
-        if(!PlayerPrefs.HasKey("MapMaker"))
+        if (!PlayerPrefs.HasKey("MapMaker"))
         {
             PlayerPrefs.SetString("MapMaker", "0000000000000000000000000000");
         }
@@ -118,7 +108,7 @@ public class TileEditorMaker : MonoBehaviour
                 tiles[SelectedTile].isChest = false;
                 tiles[SelectedTile].isEnd = false;
                 tiles[SelectedTile].SpawnNothing();
-                
+
                 break;
         }
         AudioManager.Play("MapMakerAdd");
@@ -159,10 +149,11 @@ public class TileEditorMaker : MonoBehaviour
 
     public void SetMapToSaved()
     {
-        for(int i = 0; i < tiles.Length; i++)
+        for (int i = 0; i < tiles.Length; i++)
         {
             EditSaidTile(i, int.Parse(PlayerPrefs.GetString("MapMaker")[i].ToString()));
         }
+        HasStar = CheckIfAlreadyHasStar();
     }
 
     public void ClearAll()
@@ -230,5 +221,11 @@ public class TileEditorMaker : MonoBehaviour
     }
 
 
- 
+    private bool CheckIfAlreadyHasStar()
+    {
+        foreach(var tile in tiles)
+            if (tile.isChest)
+                return true;
+        return false;
+    }
 }
